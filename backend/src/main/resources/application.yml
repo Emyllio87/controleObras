@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: controle-obras
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/controle_obras}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    hikari:
+      maximum-pool-size: 10
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: America/Sao_Paulo
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  servlet:
+    multipart:
+      max-file-size: ${UPLOAD_MAX_BYTES:10485760}
+      max-request-size: ${UPLOAD_MAX_BYTES:10485760}
+
+server:
+  port: 8080
+  error:
+    include-message: never
+    include-stacktrace: never
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:1c0ntr0l3-d3-0br4s-chav3-p4dr40-para-desenvolvimento-local}
+    expiracao: ${JWT_EXPIRACAO:PT8H}
+  arquivos:
+    diretorio: ${ARQUIVOS_DIR:./storage/anexos}
+    tamanho-maximo: ${UPLOAD_MAX_BYTES:10485760}
+  admin:
+    login: ${ADMIN_LOGIN:admin}
+    senha: ${ADMIN_SENHA:admin123}
+  frontend:
+    origem: ${FRONTEND_ORIGIN:http://localhost:5173}

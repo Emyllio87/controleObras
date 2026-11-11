@@ -1,0 +1,19 @@
+# Java / Maven
+backend/target/
+*.class
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Ambiente local
+.env
+*.log
+
+# Anexos enviados
+backend/storage/
+
+# IDE
+.idea/
+.vscode/
+*.iml
