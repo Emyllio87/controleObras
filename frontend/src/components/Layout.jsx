@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { useSessao } from '../context/SessaoContext';
+import { useSessao } from '../sessao';
 import { MENU } from '../menu';
 
 export default function Layout() {

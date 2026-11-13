@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import Aviso from '../components/Aviso';
 import Campo from '../components/Campo';
-import api, { errosCampos, mensagemErro } from '../services/api';
+import api, { errosCampos, mensagemErro } from '../api';
 import { STATUS_USUARIO } from '../utils/constantes';
+import { emailValido } from '../utils/validacoes';
 
 const FORM_VAZIO = { nome: '', login: '', senha: '', status: 'ATIVO', telas: [] };
 
@@ -54,7 +55,9 @@ export default function Usuarios() {
       novos.nome = 'Nome é obrigatório';
     }
     if (!form.login.trim()) {
-      novos.login = 'Login é obrigatório';
+      novos.login = 'E-mail é obrigatório';
+    } else if (!emailValido(form.login)) {
+      novos.login = 'E-mail inválido';
     }
     if (!editando && !form.senha.trim()) {
       novos.senha = 'Senha é obrigatória';
@@ -140,11 +143,13 @@ export default function Usuarios() {
             />
           </Campo>
 
-          <Campo rotulo="Login" obrigatorio erro={erros.login}>
+          <Campo rotulo="E-mail" obrigatorio erro={erros.login}>
             <input
+              type="email"
               className={`entrada ${erros.login ? 'entrada-erro' : ''}`}
               value={form.login}
               onChange={(evento) => setForm({ ...form, login: evento.target.value })}
+              placeholder="nome@empresa.com"
               maxLength={60}
             />
           </Campo>
@@ -210,7 +215,7 @@ export default function Usuarios() {
               <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>Login</th>
+                <th>E-mail</th>
                 <th>Status</th>
                 <th>Telas</th>
                 <th className="text-right">Ações</th>

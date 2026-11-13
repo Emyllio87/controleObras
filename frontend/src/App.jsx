@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
-import RotaProtegida from './routes/RotaProtegida';
-import RotaTela from './routes/RotaTela';
+import RotaProtegida from './components/RotaProtegida';
+import RotaTela from './components/RotaTela';
 import Inicio from './pages/Inicio';
 import Login from './pages/Login';
 import Usuarios from './pages/Usuarios';

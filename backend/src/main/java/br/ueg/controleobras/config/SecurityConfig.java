@@ -1,6 +1,6 @@
 package br.ueg.controleobras.config;
 
-import br.ueg.controleobras.seguranca.JwtAuthenticationFilter;
+import br.ueg.controleobras.config.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;

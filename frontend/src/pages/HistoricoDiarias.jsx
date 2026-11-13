@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from 'react';
 import Aviso from '../components/Aviso';
-import api, { mensagemErro } from '../services/api';
+import api, { mensagemErro } from '../api';
 import { baixarArquivo } from '../utils/download';
 import { dataBR, moeda } from '../utils/formatadores';
 

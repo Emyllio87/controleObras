@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import { useSessao } from '../context/SessaoContext';
+import { useSessao } from '../sessao';
 import { MENU } from '../menu';
 
 export default function Inicio() {

@@ -1,9 +1,10 @@
 package br.ueg.controleobras.config;
 
-import br.ueg.controleobras.dominio.StatusUsuario;
-import br.ueg.controleobras.dominio.Tela;
-import br.ueg.controleobras.dominio.Usuario;
-import br.ueg.controleobras.repositorio.UsuarioRepository;
+import br.ueg.controleobras.model.StatusUsuario;
+import br.ueg.controleobras.model.Tela;
+import br.ueg.controleobras.model.Usuario;
+import br.ueg.controleobras.repository.UsuarioRepository;
+import br.ueg.controleobras.service.Emails;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.EnumSet;
-import java.util.Locale;
 
 @Component
 @RequiredArgsConstructor
@@ -37,7 +37,7 @@ public class AdminInitializer implements CommandLineRunner {
         }
         Usuario admin = new Usuario();
         admin.setNome("Administrador");
-        admin.setLogin(login.trim().toLowerCase(Locale.ROOT));
+        admin.setLogin(Emails.normalizar(login));
         admin.setSenha(encoder.encode(senha));
         admin.setStatus(StatusUsuario.ATIVO);
         admin.setTelas(EnumSet.allOf(Tela.class));

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { useSessao } from '../context/SessaoContext';
-import api, { mensagemErro } from '../services/api';
+import { useSessao } from '../sessao';
+import api, { mensagemErro } from '../api';
+import { emailValido } from '../utils/validacoes';
 
 export default function Login() {
   const { usuario, entrar } = useSessao();
@@ -17,9 +18,14 @@ export default function Login() {
   async function submeter(evento) {
     evento.preventDefault();
     setErro('');
+    const email = form.login.trim();
+    if (!emailValido(email)) {
+      setErro('Informe um e-mail válido');
+      return;
+    }
     setEnviando(true);
     try {
-      const { data } = await api.post('/auth/login', form);
+      const { data } = await api.post('/auth/login', { ...form, login: email });
       entrar(data);
       navigate('/', { replace: true });
     } catch (falha) {
@@ -34,18 +40,21 @@ export default function Login() {
       <div className="w-full max-w-sm">
         <div className="mb-6 text-center">
           <h1 className="text-2xl font-semibold text-slate-800">Controle de Obras</h1>
-          <p className="mt-1 text-sm text-slate-500">Acesse com seu usuário e senha</p>
+          <p className="mt-1 text-sm text-slate-500">Acesse com seu e-mail e senha</p>
         </div>
 
         <form onSubmit={submeter} className="cartao space-y-4">
           {erro && <div className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{erro}</div>}
 
           <div>
-            <label htmlFor="login" className="rotulo">Login</label>
+            <label htmlFor="login" className="rotulo">E-mail</label>
             <input
               id="login"
+              type="email"
               className="entrada"
-              autoComplete="username"
+              autoComplete="email"
+              placeholder="nome@empresa.com"
+              maxLength={60}
               value={form.login}
               onChange={(evento) => setForm({ ...form, login: evento.target.value })}
               required

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Aviso from '../components/Aviso';
 import Campo from '../components/Campo';
-import api, { errosCampos, mensagemErro } from '../services/api';
+import api, { errosCampos, mensagemErro } from '../api';
 import { baixarArquivo } from '../utils/download';
 import { quantidade } from '../utils/formatadores';
 

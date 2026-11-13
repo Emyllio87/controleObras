@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Aviso from '../components/Aviso';
 import Campo from '../components/Campo';
 import EntradaMoeda from '../components/EntradaMoeda';
-import api, { errosCampos, mensagemErro } from '../services/api';
+import api, { errosCampos, mensagemErro } from '../api';
 import { baixarArquivo } from '../utils/download';
 import { dataBR, formatarCnpj, moeda, numeroPedido, quantidade } from '../utils/formatadores';
 import { dataDoApi, dataParaApi, hojeISO, moedaParaNumero, numeroParaMoeda } from '../utils/mascaras';

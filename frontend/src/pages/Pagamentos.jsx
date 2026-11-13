@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Aviso from '../components/Aviso';
-import api, { mensagemErro } from '../services/api';
+import api, { mensagemErro } from '../api';
 import { STATUS_PAGAMENTO } from '../utils/constantes';
 import { dataBR, formatarChavePix, moeda } from '../utils/formatadores';
 

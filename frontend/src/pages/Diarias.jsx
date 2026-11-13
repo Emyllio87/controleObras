@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Aviso from '../components/Aviso';
 import Campo from '../components/Campo';
 import EntradaMoeda from '../components/EntradaMoeda';
-import api, { mensagemErro } from '../services/api';
+import api, { mensagemErro } from '../api';
 import { dataBR, moeda } from '../utils/formatadores';
 import { dataDoApi, dataParaApi, hojeISO, moedaParaNumero, numeroParaMoeda } from '../utils/mascaras';
 

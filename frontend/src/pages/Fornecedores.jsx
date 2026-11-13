@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Aviso from '../components/Aviso';
 import Campo from '../components/Campo';
-import api, { errosCampos, mensagemErro } from '../services/api';
+import api, { errosCampos, mensagemErro } from '../api';
 import { TIPOS_PIX, rotuloTipoPix } from '../utils/constantes';
 import { formatarChavePix, formatarCnpj, formatarTelefone } from '../utils/formatadores';
 import { chavePixParaFormulario, mascaraCnpj, mascaraTelefone, somenteDigitos } from '../utils/mascaras';
